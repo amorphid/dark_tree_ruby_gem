@@ -1,5 +1,3 @@
-require "dark_tree/version"
-
 class DarkTree < BasicObject
   include ::Kernel
 
@@ -14,6 +12,13 @@ class DarkTree < BasicObject
   private
 
   def method_missing(key, *args)
-    @hash[key]
+    if @hash.member? key
+      @hash[key]
+    else
+      raise NoKeyError
+    end
   end
 end
+
+require 'dark_tree/version'
+require 'dark_tree/no_key_error'

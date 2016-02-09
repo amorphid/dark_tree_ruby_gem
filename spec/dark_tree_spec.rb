@@ -29,5 +29,9 @@ describe DarkTree do
     it 'returns a value for @hash[key], if key exists' do
       expect(subject.a).to eq(hash[:a])
     end
+
+    it 'raises an error if @hash does not have member key' do
+      expect { subject.not_a_valid_key }.to raise_error(DarkTree::NoKeyError)
+    end
   end
 end
