@@ -10,4 +10,10 @@ class DarkTree < BasicObject
   def initialize(hash)
     @hash = hash
   end
+
+  private
+
+  def method_missing(key, *args)
+    @hash[key]
+  end
 end

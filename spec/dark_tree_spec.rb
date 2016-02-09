@@ -24,4 +24,10 @@ describe DarkTree do
     two_methods = [:__id__, :__send__]
     expect(result).to eq(two_methods)
   end
+
+  context '#method_missing' do
+    it 'returns a value for @hash[key], if key exists' do
+      expect(subject.a).to eq(hash[:a])
+    end
+  end
 end
