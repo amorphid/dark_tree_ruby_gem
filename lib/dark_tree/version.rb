@@ -1,3 +1,3 @@
-module DarkTree
+class DarkTree < BasicObject
   VERSION = "0.1.0"
 end
