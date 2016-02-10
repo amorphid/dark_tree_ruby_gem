@@ -1,7 +1,7 @@
 class DarkTree < BasicObject
   include ::Kernel
 
-  should_be_public  = [:__id__, :__send__]
+  should_be_public  = [:__id__, :__send__, :inspect]
   should_be_private = public_instance_methods - should_be_public
   should_be_private.each { |methyd| private methyd }
 
@@ -13,10 +13,19 @@ class DarkTree < BasicObject
 
   def method_missing(key, *args)
     if @hash.member? key
-      @hash[key]
-    else
-      raise NoKeyError
+      return @hash[key]
     end
+
+    if question_key?(key)
+      questionless_key = key[0..-2].to_sym
+      return @hash[questionless_key] ? true : false
+    end
+
+    raise NoKeyError, "#{key}"
+  end
+
+  def question_key?(key)
+    key[-1] == '?'
   end
 end
 

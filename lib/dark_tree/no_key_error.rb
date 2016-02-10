@@ -1,6 +1,6 @@
 class DarkTree
   class NoKeyError < ::StandardError
-    def initialize(msg = 'insert more meaningful error message here')
+    def initialize(msg)
       super
     end
   end
