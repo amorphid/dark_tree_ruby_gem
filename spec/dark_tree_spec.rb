@@ -23,4 +23,8 @@ describe DarkTree do
     size = subject.__send__(:instance_exec, &reject_rspec_methods).size
     expect(size).to eq(3)
   end
+
+  it 'returns value of hash key' do
+    expect(subject.a).to eq(hash[:a])
+  end
 end
