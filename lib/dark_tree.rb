@@ -12,22 +12,10 @@ class DarkTree < BasicObject
   private
 
   def method_missing(key, *args)
-    if @hash.member? key
-      return @hash[key]
-    end
-
-    if question_key?(key)
-      questionless_key = key[0..-2].to_sym
-      return @hash[questionless_key] ? true : false
-    end
-
-    raise NoKeyError, "#{key}"
-  end
-
-  def question_key?(key)
-    key[-1] == '?'
+    MissingMethodStrategy.new(@hash, key).execute
   end
 end
 
 require 'dark_tree/version'
 require 'dark_tree/no_key_error'
+require 'dark_tree/missing_method_strategy'
