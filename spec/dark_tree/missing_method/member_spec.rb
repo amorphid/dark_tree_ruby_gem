@@ -12,9 +12,9 @@ class DarkTree
 
       subject { described_class.new(params) }
 
-      context '#exec' do
+      context '#key_value' do
         it "returns key's value" do
-          result = subject.exec
+          result = subject.send(:key_value)
           expect(result).to eq(params[:hash][:a])
         end
       end
