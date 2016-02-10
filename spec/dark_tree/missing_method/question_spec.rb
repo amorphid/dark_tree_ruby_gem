@@ -4,22 +4,19 @@ class DarkTree
   class MissingMethod
     describe Question do
       def params(symbol)
-        {
-          hash: { a: 'hey!' },
-          key_as_symbol: symbol
-        }
+        MethodMissingBaseParams(key: symbol)
       end
 
-      context '#truthy?' do
+      context '#exec' do
         it "returns true if key's value truthy" do
           subject = described_class.new(params(:a?))
-          result  = subject.send(:truthy?)
+          result  = subject.exec
           expect(result).to eq(true)
         end
 
         it "returns false if key's value falsey" do
           subject = described_class.new(params(:not_a_valid_key?))
-          result  = subject.send(:truthy?)
+          result  = subject.exec
           expect(result).to eq(false)
         end
       end

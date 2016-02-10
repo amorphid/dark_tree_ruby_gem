@@ -2,17 +2,20 @@ require 'spec_helper'
 
 class DarkTree
   class MissingMethod
-    describe Member do
-      let(:params) { MethodMissingBaseParams() }
+    describe Error do
+      let(:params) do
+        MethodMissingBaseParams()
+      end
 
       subject { described_class.new(params) }
 
       context '#exec' do
         it "returns key's value" do
-          result = subject.exec
-          expect(result).to eq(params[:hash][:a])
+          expect { subject.exec }.to raise_error(::DarkTree::NoKeyError)
         end
       end
     end
   end
 end
+
+

@@ -8,3 +8,10 @@ end
 def called_message
   'I was called, and I enjoyed it'
 end
+
+def MethodMissingBaseParams(hash: { a: 'hey!' }, key: :a)
+  {
+    hash:          hash,
+    key_as_symbol: key
+  }
+end
