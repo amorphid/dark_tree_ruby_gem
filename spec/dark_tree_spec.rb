@@ -23,18 +23,4 @@ describe DarkTree do
     size = subject.__send__(:instance_exec, &reject_rspec_methods).size
     expect(size).to eq(3)
   end
-
-  context '#method_missing' do
-    it 'returns a value for @hash[key], if key exists' do
-      expect(subject.a).to eq(hash[:a])
-    end
-
-    it 'returns true for truthy value of @hash[key], if key for `key?` exists' do
-      expect(subject.a?).to eq(true)
-    end
-
-    it 'raises an error if @hash does not have member key' do
-      expect { subject.not_a_valid_key }.to raise_error(DarkTree::NoKeyError)
-    end
-  end
 end
