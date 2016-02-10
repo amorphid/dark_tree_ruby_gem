@@ -19,3 +19,7 @@ end
 require 'dark_tree/version'
 require 'dark_tree/no_key_error'
 require 'dark_tree/missing_method_strategy'
+
+require 'dark_tree/missing_method'
+require 'dark_tree/missing_method/base'
+require 'dark_tree/missing_method/member'
