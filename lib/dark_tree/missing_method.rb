@@ -12,6 +12,18 @@ class DarkTree
 
     private
 
+    def args
+      @args ||= params.fetch(:args)
+    end
+
+    def block
+      @block ||= params[:block] || -> {}
+    end
+
+    def dark_tree
+      @dark_tree ||= params.fetch(:dark_tree)
+    end
+
     def hash
       @hash ||= params.fetch(:hash)
     end
@@ -24,12 +36,18 @@ class DarkTree
       hash.member?(key)
     end
 
+    def method?
+      dark_tree.__send__(:respond_to?, key, true)
+    end
+
     def strategy
       case
       when member?
         Member
       when question?
         Question
+      when method?
+        dark_tree.__send__(key, *args, &block)
       else
         Error
       end

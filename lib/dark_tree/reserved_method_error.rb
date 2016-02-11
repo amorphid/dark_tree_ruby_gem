@@ -1,5 +1,5 @@
 class DarkTree
-  class NoKeyError < ::StandardError
+  class ReservedMethodError < ::StandardError
     def initialize(msg)
       super(msg.to_s)
     end

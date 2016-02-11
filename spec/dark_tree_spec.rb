@@ -42,4 +42,14 @@ describe DarkTree do
       expect(subject.is_this_a_valid_key?).to eq(false)
     end
   end
+
+  context '#to_hash' do
+    it 'returns @hash' do
+      dark_tree    = DarkTree.new(hash)
+      instance_var = dark_tree.__send__(:instance_variable_get, '@hash')
+      hash         = dark_tree.__send__(:to_hash)
+      result       = hash.equal?(instance_var)
+      expect(result).to eq(true)
+    end
+  end
 end
