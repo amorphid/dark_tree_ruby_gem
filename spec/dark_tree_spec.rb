@@ -27,4 +27,19 @@ describe DarkTree do
   it 'returns value of hash key' do
     expect(subject.a).to eq(hash[:a])
   end
+
+  it 'raises error if key not found (and no question mark)' do
+    expect { subject.is_this_a_valid_key }
+    .to raise_error(::DarkTree::NoKeyError)
+  end
+
+  context 'for keys with question marks' do
+    it 'returns true for truthy value' do
+      expect(subject.a?).to eq(true)
+    end
+
+    it 'returns false for falsey value' do
+      expect(subject.is_this_a_valid_key?).to eq(false)
+    end
+  end
 end
