@@ -12,13 +12,12 @@ class DarkTree < BasicObject
   private
 
   def method_missing(key, *args)
-    MissingMethodStrategy.new(@hash, key).execute
+    MissingMethod.new(hash: @hash, key_as_symbol: key).exec
   end
 end
 
 require 'dark_tree/version'
 require 'dark_tree/no_key_error'
-require 'dark_tree/missing_method_strategy'
 
 require 'dark_tree/missing_method'
 require 'dark_tree/missing_method/base'
