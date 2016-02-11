@@ -1,7 +1,13 @@
 class DarkTree < BasicObject
   include ::Kernel
 
-  should_be_public  = [:__id__, :__send__, :inspect]
+  RESERVED_PUBLIC_INSTANCE_METHODS = ::Set.new([
+    :__id__,
+    :__send__,
+    :inspect
+  ]).freeze
+
+  should_be_public  = RESERVED_PUBLIC_INSTANCE_METHODS.to_a
   should_be_private = public_instance_methods - should_be_public
   should_be_private.each { |methyd| private methyd }
 
@@ -15,6 +21,8 @@ class DarkTree < BasicObject
     MissingMethod.new(hash: @hash, key_as_symbol: key).exec
   end
 end
+
+require 'set'
 
 require 'dark_tree/version'
 require 'dark_tree/no_key_error'
