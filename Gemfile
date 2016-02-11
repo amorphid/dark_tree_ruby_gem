@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 group :test do
+  gem 'benchmark-ips'
   gem 'pry-byebug'
 end
