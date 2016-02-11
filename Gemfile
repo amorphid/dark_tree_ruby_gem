@@ -5,5 +5,6 @@ gemspec
 
 group :test do
   gem 'benchmark-ips'
+  gem 'hashie'
   gem 'pry-byebug'
 end
