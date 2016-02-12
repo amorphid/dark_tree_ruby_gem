@@ -40,6 +40,7 @@ require 'dark_tree/no_key_error'
 require 'dark_tree/reserved_method_error'
 require 'dark_tree/version'
 
+require 'dark_tree/missing_method/helpers'
 require 'dark_tree/missing_method'
 require 'dark_tree/missing_method/base'
 require 'dark_tree/missing_method/error'
