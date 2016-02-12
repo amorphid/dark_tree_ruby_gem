@@ -19,6 +19,12 @@ class DarkTree
         expect(result).to eq(::DarkTree::MissingMethod::Question)
       end
 
+      it 'returns PrivateMethod w/ private_method key' do
+        subject = described_class.new(params(:class))
+        result  = subject.send(:strategy)
+        expect(result).to eq(::DarkTree::MissingMethod::PrivateMethod)
+      end
+
       it 'returns Error w/ invalid key' do
         subject = described_class.new(params(:not_a_valid_key))
         result  = subject.send(:strategy)

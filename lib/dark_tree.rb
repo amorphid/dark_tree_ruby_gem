@@ -44,6 +44,7 @@ require 'dark_tree/missing_method'
 require 'dark_tree/missing_method/base'
 require 'dark_tree/missing_method/error'
 require 'dark_tree/missing_method/member'
+require 'dark_tree/missing_method/private_method'
 require 'dark_tree/missing_method/question'
 
 require 'dark_tree/symbolize_hash'

@@ -13,7 +13,7 @@ class DarkTree
     private
 
     def args
-      @args ||= params.fetch(:args)
+      @args ||= params[:args]
     end
 
     def block
@@ -21,22 +21,22 @@ class DarkTree
     end
 
     def dark_tree
-      @dark_tree ||= params.fetch(:dark_tree)
+      @dark_tree ||= params[:dark_tree]
     end
 
     def hash
-      @hash ||= params.fetch(:hash)
+      @hash ||= params[:hash]
     end
 
     def key
-      @key ||= params.fetch(:key_as_symbol)
+      @key ||= params[:key_as_symbol]
     end
 
     def member?
       hash.member?(key)
     end
 
-    def method?
+    def private_method?
       dark_tree.__send__(:respond_to?, key, true)
     end
 
@@ -46,8 +46,8 @@ class DarkTree
         Member
       when question?
         Question
-      when method?
-        dark_tree.__send__(key, *args, &block)
+      when private_method?
+        PrivateMethod
       else
         Error
       end
