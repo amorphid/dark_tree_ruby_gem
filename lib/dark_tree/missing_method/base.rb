@@ -9,6 +9,18 @@ class DarkTree
 
       private
 
+      def args
+        @args ||= params[:args]
+      end
+
+      def block
+        @block ||= params[:block] || -> {}
+      end
+
+      def dark_tree
+        @dark_tree ||= params[:dark_tree]
+      end
+
       def hash
         @hash ||= params.fetch(:hash)
       end

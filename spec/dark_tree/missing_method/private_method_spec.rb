@@ -9,8 +9,8 @@ class DarkTree
 
       context '#exec' do
         it 'returns the class' do
-          result = subject.class
-          expect(result).to eq(described_class)
+          result = subject.exec
+          expect(result).to eq(DarkTree)
         end
       end
     end
