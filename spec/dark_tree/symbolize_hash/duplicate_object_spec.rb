@@ -20,13 +20,6 @@ class DarkTree
           expect(result).to eq(false)
         end
 
-        it 'returns a DarkTree w/ occupied hash' do
-          occupied = { a: 'hey!' }
-          object   = subject.duplicate(occupied)
-          result   = object.__send__(:instance_of?, ::DarkTree)
-          expect(result).to eq(true)
-        end
-
         it 'returns un-duplicate-able object' do
           old_object  = [1, 2.0, :"3", BasicObject].sample
           same_object = subject.duplicate(old_object)

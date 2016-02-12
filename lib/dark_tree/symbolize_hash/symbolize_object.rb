@@ -28,7 +28,7 @@ class DarkTree
         end
 
         def reserved?(symbol)
-          ::DarkTree::RESERVED_PUBLIC_INSTANCE_METHODS.member? symbol
+          ::DarkTree::RESERVED_HASH_KEYS.member? symbol
         end
       end
     end

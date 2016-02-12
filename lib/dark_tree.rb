@@ -1,13 +1,18 @@
 class DarkTree < BasicObject
   include ::Kernel
 
-  RESERVED_PUBLIC_INSTANCE_METHODS = ::Set.new([
-    :__id__,
-    :__send__,
-    :inspect
-  ]).freeze
+  reserved_methods = [ :__id__, :__send__, :inspect]
+  question_methods = public_instance_methods.select do |m|
+    if m[-1] == '?'
+      m[0..-2].to_sym
+    end
+  end
 
-  should_be_public  = RESERVED_PUBLIC_INSTANCE_METHODS.to_a
+  reserved_hash_keys = reserved_methods + question_methods
+
+  RESERVED_HASH_KEYS = ::Set.new(reserved_hash_keys).freeze
+
+  should_be_public  = RESERVED_HASH_KEYS.to_a
   should_be_private = public_instance_methods - should_be_public
   should_be_private.each { |methyd| private methyd }
 

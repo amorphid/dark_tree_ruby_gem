@@ -1,3 +1,5 @@
+require 'json'
+
 class DarkTree
   class MissingMethod
     include Helpers
@@ -30,7 +32,7 @@ class DarkTree
     end
 
     def question?
-      key[-1] == '?'
+      key[-1] == '?' && !(::DarkTree::RESERVED_HASH_KEYS.member? key)
     end
   end
 end
