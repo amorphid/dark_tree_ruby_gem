@@ -28,7 +28,7 @@ class DarkTree
       end
 
       def occupied?(object)
-        object.__send__(:size) > 0
+        object.__send__(:to_hash).size > 0
       end
 
       def occupied_hash?(object)

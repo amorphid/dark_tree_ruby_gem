@@ -8,7 +8,7 @@ class DarkTree
       private
 
       def raise_error
-        raise NoKeyError.new(stringified_key)
+        raise ::NoMethodError.new(stringified_key)
       end
 
       def stringified_key

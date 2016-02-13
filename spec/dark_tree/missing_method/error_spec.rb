@@ -11,7 +11,7 @@ class DarkTree
 
       context '#exec' do
         it "returns key's value" do
-          expect { subject.exec }.to raise_error(::DarkTree::NoKeyError)
+          expect { subject.exec }.to raise_error(NoMethodError)
         end
       end
     end

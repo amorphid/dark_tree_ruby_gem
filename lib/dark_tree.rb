@@ -1,14 +1,12 @@
-class DarkTree < BasicObject
-  include ::Kernel
-
-  reserved_methods = [ :__id__, :__send__, :inspect]
-  question_methods = public_instance_methods.select do |m|
+class DarkTree
+  whitelist_methods = [ :__id__, :__send__, :inspect]
+  question_methods  = public_instance_methods.select do |m|
     if m[-1] == '?'
       m[0..-2].to_sym
     end
   end
 
-  reserved_hash_keys = reserved_methods + question_methods
+  reserved_hash_keys = whitelist_methods + question_methods
 
   RESERVED_HASH_KEYS = ::Set.new(reserved_hash_keys).freeze
 
@@ -22,26 +20,25 @@ class DarkTree < BasicObject
 
   private
 
-  def to_hash
-    @hash
-  end
-
   def method_missing(key, *args, &block)
     MissingMethod.new({
-      args:      args,
-      block:     block,
-      dark_tree: self,
-      hash:      @hash,
+      args:          args,
+      block:         block,
+      dark_tree:     self,
+      hash:          @hash,
       key_as_symbol: key
     }).exec
   end
+
+  def to_hash
+    @hash
+  end
 end
 
-require 'pp'
+
 require 'set'
 
 require 'dark_tree/key'
-require 'dark_tree/no_key_error'
 require 'dark_tree/reserved_method_error'
 require 'dark_tree/version'
 

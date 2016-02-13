@@ -9,7 +9,7 @@ def called_message
   'I was called, and I enjoyed it'
 end
 
-def MethodMissingBaseParams(args: [], block: -> {}, hash: { a: 'hey!' },key: :a, dark_tree: DarkTree.new(hash))
+def MethodMissingBaseParams(args: [], block: nil, hash: { a: 'hey!' },key: :a, dark_tree: DarkTree.new(hash))
   {
     args:          args,
     block:         block,

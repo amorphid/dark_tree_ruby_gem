@@ -14,7 +14,7 @@ class DarkTree
       end
 
       def block
-        @block ||= params[:block] || -> {}
+        @block ||= params[:block]
       end
 
       def dark_tree

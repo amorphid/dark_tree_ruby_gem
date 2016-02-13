@@ -7,8 +7,16 @@ class DarkTree
 
       private
 
+      def blokk?
+        block ? true : false
+      end
+
       def call
-        dark_tree.__send__(key, *args, &block)
+        if blokk?
+          dark_tree.__send__(key, *args, &block)
+        else
+          dark_tree.__send__(key, *args)
+        end
       end
     end
   end

@@ -25,7 +25,7 @@ class DarkTree
         end
 
         it 'raises an error if symbol is reserved' do
-          symbol = ::DarkTree::RESERVED_PUBLIC_INSTANCE_METHODS
+          symbol = ::DarkTree::RESERVED_HASH_KEYS
                    .to_a
                    .sample
           expect { subject.symbolize(symbol) }
